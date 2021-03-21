@@ -2,9 +2,10 @@ pragma solidity >=0.4.22 <0.9.0;
 
 import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 import "@openzeppelin/contracts/utils/Counters.sol";
+import "@openzeppelin/contracts/access/Ownable.sol";
 //import "@openzeppelin/contracts/token/ERC721/IERC721Metadata.sol";
 
-contract FightingAnimals is ERC721 {
+contract FightingAnimals is ERC721, Ownable {
     using Counters for Counters.Counter;
     Counters.Counter private _tokenIds;
 
@@ -25,12 +26,12 @@ contract FightingAnimals is ERC721 {
     }
 
     function unregisterBreeder(address _address) public onlyOwner{// remove breeder from the list of registered breader
-        whitelist[_address] = false;
+        registedBreeder[_address] = false;
         emit unregisterOldBreeder(_address);
     }
 
     function isRegistered(address _address) public view returns(bool) {
-        return registeredBreeder[_address];
+        return registedBreeder[_address];
     }
 
 
@@ -51,5 +52,9 @@ contract FightingAnimals is ERC721 {
         string name; // Name of the Item
         uint tentacule; // Item Level
         uint rarityLevel;  // 1 = normal, 2 = rare, 3 = epic, 4 = legendary
+    }
+
+    function declareAnimal() public{
+
     }
 }
