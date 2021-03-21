@@ -50,11 +50,27 @@ contract FightingAnimals is ERC721, Ownable {
 
     struct CryptoPoulpe{
         string name; // Name of the Item
+        string color;
         uint tentacule; // Item Level
         uint rarityLevel;  // 1 = normal, 2 = rare, 3 = epic, 4 = legendary
     }
 
-    function declareAnimal() public{
+    // here the function to create a new animal 
+    function declareAnimal(address receiver, string memory tokenURI) external onlyOwner returns (uint256){
+        _tokenIds.increment();
+
+        uint256 newAnimal = _tokenIds.current();
+        _mint(receiver, newAnimal);
+        _setTokenURI(newAnimal, tokenURI);
+
+        return newAnimal;
+    }
+
+    function deadAniaml(uint256 tokenID) external onlyOwner {
+        _burn(tokenID);
+    }
+
+    function breedAnimal(address breeder, uint256 tokenId) public {
 
     }
 }
