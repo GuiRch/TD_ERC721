@@ -1,7 +1,7 @@
 # TD_ERC721
 Guillaume RICHER - Pierre-Louis QUANDALLE - Marie APPOLAIRE
 
-## Create an ERC721 token contrac
+## Create an ERC721 token contract
 
 ```python
 constructor() public ERC721("CryptoPoulpe", "PLP") {
