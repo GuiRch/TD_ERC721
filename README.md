@@ -108,7 +108,7 @@ function breedAnimal(CryptoPoulpe firstAnimal, CryptoPoulpe secondAnimal, addres
 
 Premièrement compléter le secret.json avec vos valeurs pour le projet infura sur rinkeby et l'une de vos seed ou vous disposez
 d'eth du testnet rinkeby.
-Enlevez les commentaires ligne 24 de trufflejs et ceux de deploycontract.js
-Faites truffle develop
-compile
-migrate --network rinkeby
+Enlevez les commentaires ligne 24 de trufflejs et ceux de deploycontract.js   
+Faites truffle develop   
+compile   
+migrate --network rinkeby   
