@@ -81,8 +81,24 @@ contract FightingAnimals is ERC721, Ownable {
         return newAnimal;
     }
 
-    function deadAniaml(uint256 tokenID) external onlyOwner {
+    function deadAnimal(uint256 tokenID) external onlyOwner {
         _burn(tokenID);
+    }
+    
+    // breed two cryptopoulpes : choose color randomly between parents, rarity is random, chance, smart and
+    // tentacule are the result of the mean of the parents' ones.
+    function breedAnimal(CryptoPoulpe firstAnimal, CryptoPoulpe secondAnimal, address receiver, string calldata tokenURI) public onlyOwner {
+        require(firstAnimal.receiver == secondAnimal.receiver);
+
+        enum Colors{ firstAnimal.color, secondAnimal.color };
+
+        Colors color = Colors(random(uint(Colors.GROUND)));
+        Rarity rarity = Rarity(random(uint(Rarity.GROUND)));
+        uint256 chance = (firstAnimal.chance + secondAnimal.chance)/2;
+        uint256 smart = (firstAnimal.smart + secondAnimal.chance)/2;
+        uint256 tentacule = (firstAnimal.tentacule + secondAnimal.tentacule)/2;
+        CryptoPoulpe memory breededCryptoPoulpe = CryptoPoulpe(chance, smart, tentacule, color, rarity);
+        return declareAnimal(receiver, tokenURI);
     }
 
 }
